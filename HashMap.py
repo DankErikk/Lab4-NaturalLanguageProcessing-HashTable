@@ -32,7 +32,7 @@ class HashMap:
         while temp_node.key != None:
             if temp_node.key == word:
                 return temp_node
-            temp = temp.next
+            temp_node = temp_node.next
         print("Word: " + str(word) + " is not in the array...")
         return None
 

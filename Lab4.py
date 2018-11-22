@@ -34,7 +34,6 @@ def create_hash_array(file_name , size):
                         embedding.append(float(num))
                     node = HashNode(word, embedding)
                     #print("Inserting: " + str(node.key))
-                    print("Inserting " + node.key)
                     hash_array.__insert__(node)
 
     except FileNotFoundError:
@@ -88,9 +87,9 @@ def display_options():
     
     return user_ans
 
-def perform_operation(user_ans, array):
+def perform_operation(user_ans, HashMap):
     if user_ans == 1:
-            amount = compute_amount_nodes(array)
+            amount = compute_amount_nodes(HashMap)
             print("There are " + str(amount) + " nodes")
     if user_ans == 2:
         # height = compute_tree_height(temp.root)
@@ -98,7 +97,7 @@ def perform_operation(user_ans, array):
     if user_ans == 3:
         file_name_word = "word_file.txt"
         word_file = open(file_name_word,"w+",encoding =  "utf8")
-        generate_text_file_from_tree(temp.root, word_file)
+        generate_text_file_from_hashtable(HashMap.array, word_file)
         print("Word file generated: word_file.txt")
     if user_ans == 4:
         # file_name_word_depth = "word_file_depth.txt"
@@ -125,7 +124,7 @@ def perform_operation(user_ans, array):
         exit()
     
 def compute_amount_nodes(array):
-    return array.size
+    return array.count
 def generate_text_file_from_hashtable(array, word_file):
     for node in array:
         while node != None:
